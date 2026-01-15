@@ -32,10 +32,10 @@
                                 nolabel="1"
                                 context="{'default_category_id': id}"
                             >
-                                <list editable="bottom">
+                                <tree editable="bottom">
                                     <field name="key" />
                                     <field name="value" />
-                                </list>
+                                </tree>
                             </field>
                         </group>
                         <group string="Private Metadata" colspan="2">
@@ -44,10 +44,10 @@
                                 nolabel="1"
                                 context="{'default_category_id': id}"
                             >
-                                <list editable="bottom">
+                                <tree editable="bottom">
                                     <field name="key" />
                                     <field name="value" />
-                                </list>
+                                </tree>
                             </field>
                         </group>
                     </page>

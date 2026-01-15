@@ -7,7 +7,8 @@
     """,
     "category": "Sales/Sales",
     "author": "Kencove, Odoo Community Association (OCA)",
-    "version": "18.0.1.0.0",
+    "website": "https://github.com/OCA/e-commerce",
+    "version": "16.0.1.0.0",
     "depends": [
         "account",
         "base",

@@ -8,7 +8,7 @@
                 <div
                     class="alert alert-warning"
                     role="alert"
-                    invisible="duplicate_type_warning == ''"
+                    attrs="{'invisible': [('duplicate_type_warning', '=', '')]}"
                 >
                     <field name="duplicate_type_warning" readonly="1" />
                 </div>
@@ -25,16 +25,16 @@
                     </group>
                     <group string="Conditions">
                         <field name="condition_ids" nolabel="1">
-                            <list editable="bottom">
+                            <tree editable="bottom">
                                 <field
                                     name="catalogue_predicate_type"
                                     nolabel="1"
-                                    column_invisible="parent.predicate_type != 'catalogue'"
+                                    attrs="{'invisible': [('parent.predicate_type', '!=', 'catalogue')]}"
                                 />
                                 <field
                                     name="order_predicate_type"
                                     nolabel="1"
-                                    column_invisible="parent.predicate_type != 'order'"
+                                    attrs="{'invisible': [('parent.predicate_type', '!=', 'order')]}"
                                 />
                                 <field
                                     name="operator_id"
@@ -45,35 +45,31 @@
                                 <!-- Product template selector -->
                                 <field
                                     name="product_template_ids"
-                                    column_invisible="parent.predicate_type != 'catalogue'"
+                                    attrs="{'invisible': [('parent.predicate_type', '!=', 'catalogue')], 'readonly': [('catalogue_predicate_type', '!=', 'product')]}"
                                     domain="[('channel_ids', '=', parent.channel_id), ('type', '=', 'consu')]"
-                                    readonly="catalogue_predicate_type != 'product'"
                                     widget="many2many_tags"
                                 />
                                 <!-- Product variant selector -->
                                 <field
                                     name="product_variant_ids"
-                                    column_invisible="parent.predicate_type != 'catalogue'"
+                                    attrs="{'invisible': [('parent.predicate_type', '!=', 'catalogue')], 'readonly': [('catalogue_predicate_type', '!=', 'variant')]}"
                                     domain="[('product_tmpl_id.channel_ids', '=', parent.channel_id)]"
-                                    readonly="catalogue_predicate_type != 'variant'"
                                     widget="many2many_tags"
                                 />
                                 <!-- Collection selector -->
                                 <field
                                     name="product_collection_ids"
-                                    column_invisible="parent.predicate_type != 'catalogue'"
-                                    readonly="catalogue_predicate_type != 'collection'"
+                                    attrs="{'invisible': [('parent.predicate_type', '!=', 'catalogue')], 'readonly': [('catalogue_predicate_type', '!=', 'collection')]}"
                                     domain="[('channel_ids', '=', parent.channel_id)]"
                                     widget="many2many_tags"
                                 />
                                 <!-- Category selector -->
                                 <field
                                     name="product_category_ids"
-                                    column_invisible="parent.predicate_type != 'catalogue'"
-                                    readonly="catalogue_predicate_type != 'category'"
+                                    attrs="{'invisible': [('parent.predicate_type', '!=', 'catalogue')], 'readonly': [('catalogue_predicate_type', '!=', 'category')]}"
                                     widget="many2many_tags"
                                 />
-                            </list>
+                            </tree>
                         </field>
                     </group>
                     <group string="Reward">
@@ -81,18 +77,18 @@
                             <label
                                 for="reward_type"
                                 string="Reward Type"
-                                invisible="predicate_type != 'order'"
+                                attrs="{'invisible': [('predicate_type', '!=', 'order')]}"
                             />
                             <div class="o_row">
                                 <field
                                     name="reward_type"
-                                    invisible="predicate_type != 'order'"
+                                    attrs="{'invisible': [('predicate_type', '!=', 'order')]}"
                                 />
                                 <field
                                     name="reward_unit"
                                     nolabel="1"
                                     widget="selection_badge"
-                                    invisible="reward_type == 'gift'"
+                                    attrs="{'invisible': [('reward_type', '=', 'gift')]}"
                                 />
                             </div>
                         </group>

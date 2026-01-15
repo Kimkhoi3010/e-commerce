@@ -5,7 +5,7 @@
         <field name="name">product.collection.tree.saleor</field>
         <field name="model">product.collection</field>
         <field name="arch" type="xml">
-            <list string="Product Collections" sample="1">
+            <tree sample="1">
                 <header>
                     <button
                         name="action_saleor_collection_sync"
@@ -16,7 +16,7 @@
                     />
                 </header>
                 <field name="name" />
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -67,10 +67,10 @@
                                     name="saleor_collection_metadata_line_ids"
                                     nolabel="1"
                                 >
-                                    <list editable="bottom">
+                                    <tree editable="bottom">
                                         <field name="key" />
                                         <field name="value" />
-                                    </list>
+                                    </tree>
                                 </field>
                             </group>
                             <group string="Private Metadata" colspan="2">
@@ -78,17 +78,19 @@
                                     name="saleor_collection_private_metadata_line_ids"
                                     nolabel="1"
                                 >
-                                    <list editable="bottom">
+                                    <tree editable="bottom">
                                         <field name="key" />
                                         <field name="value" />
-                                    </list>
+                                    </tree>
                                 </field>
                             </group>
                         </page>
                     </notebook>
                 </sheet>
                 <!-- Chatter -->
-                <chatter />
+                <div class="oe_chatter"><field name="message_follower_ids" /><field
+                        name="message_ids"
+                    /></div>
             </form>
         </field>
     </record>

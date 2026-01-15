@@ -4,12 +4,12 @@
         <field name="name">saleor.account.tree</field>
         <field name="model">saleor.account</field>
         <field name="arch" type="xml">
-            <list>
+            <tree>
                 <field name="name" />
                 <field name="base_url" />
                 <field name="email" />
                 <field name="active" />
-            </list>
+            </tree>
         </field>
     </record>
 

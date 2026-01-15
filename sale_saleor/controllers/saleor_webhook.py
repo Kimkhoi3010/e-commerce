@@ -48,10 +48,10 @@ def _saleor_match_account(headers):
             if port and not (
                 (scheme == "http" and port == 80) or (scheme == "https" and port == 443)
             ):
-                netloc = f"{host}:{port}"
+                netloc = "{}:{}".format(host, port)
             else:
                 netloc = host
-            return f"{scheme}://{netloc}"
+            return "{}://{}".format(scheme, netloc)
         except Exception:
             return ""
 

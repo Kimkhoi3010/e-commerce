@@ -4,7 +4,7 @@
         <field name="name">saleor.channel.tree</field>
         <field name="model">saleor.channel</field>
         <field name="arch" type="xml">
-            <list>
+            <tree>
                 <header>
                     <button
                         name="action_sync_to_saleor"
@@ -20,7 +20,7 @@
                 <field name="abandoned_cart_delay_hours" />
                 <field name="currency_id" />
                 <field name="default_country_id" />
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -93,7 +93,9 @@
                         </group>
                     </group>
                 </sheet>
-                <chatter />
+                <div class="oe_chatter"><field name="message_follower_ids" /><field
+                        name="message_ids"
+                    /></div>
             </form>
         </field>
     </record>

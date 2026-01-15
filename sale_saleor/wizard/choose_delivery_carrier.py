@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -57,9 +57,7 @@ class ChooseDeliveryCarrier(models.TransientModel):
             order.saleor_delivery_carrier_id = carrier.id
 
             if not saleor_channel:
-                raise UserError(
-                    self.env._("This order does not have a Saleor channel linked.")
-                )
+                raise UserError(_("This order does not have a Saleor channel linked."))
 
             price_line = carrier.saleor_shipping_pricing_line_ids.filtered(
                 lambda line: line.channel_id == saleor_channel
@@ -67,7 +65,7 @@ class ChooseDeliveryCarrier(models.TransientModel):
 
             if not price_line:
                 raise UserError(
-                    self.env._(
+                    _(
                         "No shipping price configured for channel '%s'.",
                         saleor_channel.name,
                     )
@@ -76,7 +74,7 @@ class ChooseDeliveryCarrier(models.TransientModel):
             price = price_line[0].price
             self.delivery_price = price
             self.display_price = price
-            self.delivery_message = self.env._(
+            self.delivery_message = _(
                 "Saleor shipping via channel: %s", saleor_channel.name
             )
 

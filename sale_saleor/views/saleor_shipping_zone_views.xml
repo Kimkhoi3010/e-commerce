@@ -4,7 +4,7 @@
         <field name="name">saleor.shipping.zone.tree</field>
         <field name="model">saleor.shipping.zone</field>
         <field name="arch" type="xml">
-            <list string="Shipping Zones">
+            <tree>
                 <header>
                     <button
                         name="action_saleor_shipping_zone_sync"
@@ -18,7 +18,7 @@
                 <field name="description" />
                 <field name="country_ids" widget="many2many_tags" />
                 <field name="channel_ids" widget="many2many_tags" />
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -79,10 +79,10 @@
                     </group>
                     <group string="Metadata" colspan="2">
                         <field name="shipping_zone_metadata_line_ids" nolabel="1">
-                            <list editable="bottom">
+                            <tree editable="bottom">
                                 <field name="key" />
                                 <field name="value" />
-                            </list>
+                            </tree>
                         </field>
                     </group>
                     <group string="Private Metadata" colspan="2">
@@ -90,14 +90,16 @@
                             name="shipping_zone_private_metadata_line_ids"
                             nolabel="1"
                         >
-                            <list editable="bottom">
+                            <tree editable="bottom">
                                 <field name="key" />
                                 <field name="value" />
-                            </list>
+                            </tree>
                         </field>
                     </group>
                 </sheet>
-                <chatter />
+                <div class="oe_chatter"><field name="message_follower_ids" /><field
+                        name="message_ids"
+                    /></div>
             </form>
         </field>
     </record>

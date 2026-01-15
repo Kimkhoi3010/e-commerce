@@ -30,18 +30,18 @@
                     </group>
                     <group string="Metadata" colspan="2">
                         <field name="saleor_metadata_line_ids" nolabel="1">
-                            <list editable="bottom">
+                            <tree editable="bottom">
                                 <field name="key" />
                                 <field name="value" />
-                            </list>
+                            </tree>
                         </field>
                     </group>
                     <group string="Private Metadata" colspan="2">
                         <field name="saleor_private_metadata_line_ids" nolabel="1">
-                            <list editable="bottom">
+                            <tree editable="bottom">
                                 <field name="key" />
                                 <field name="value" />
-                            </list>
+                            </tree>
                         </field>
                     </group>
                 </page>

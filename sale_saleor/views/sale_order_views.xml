@@ -17,7 +17,7 @@
                     type="object"
                     string="Mark as Paid in Saleor"
                     class="btn-secondary"
-                    invisible="not saleor_order_id or saleor_mark_as_paid"
+                    attrs="{'invisible': ['|', ('saleor_order_id', '=', False), ('saleor_mark_as_paid', '=', True)]}"
                 />
             </xpath>
             <xpath expr="//field[@name='order_line']" position="before">
@@ -26,7 +26,7 @@
                     <field
                         name="saleor_channel_id"
                         options="{'no_create': True, 'no_create_edit': True}"
-                        readonly="saleor_order_id"
+                        attrs="{'readonly': [('saleor_order_id', '!=', False)]}"
                     />
                     <field name="is_abandoned" />
                 </group>

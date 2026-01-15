@@ -27,7 +27,7 @@ class StockQuant(models.Model):
             self._trigger_saleor_sync()
         return res
 
-    def _trigger_saleor_sync(self):
+    def _trigger_saleor_sync(self):  # noqa: C901
         # No-op if called in a protected context
         if tools.config["test_enable"]:
             return

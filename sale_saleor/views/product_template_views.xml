@@ -65,8 +65,6 @@
                             mode="kanban"
                             add-label="Add Media"
                             nolabel="1"
-                            widget="x2_many_media_viewer"
-                            options="{'convert_to_webp': True}"
                         />
                     </group>
                     <field name="is_metadata_fetched" invisible="1" />
@@ -74,24 +72,24 @@
                         <field
                             name="saleor_product_metadata_line_ids"
                             nolabel="1"
-                            readonly="is_metadata_fetched"
+                            attrs="{'readonly': [('is_metadata_fetched', '=', True)]}"
                         >
-                            <list editable="bottom">
+                            <tree editable="bottom">
                                 <field name="key" />
                                 <field name="value" />
-                            </list>
+                            </tree>
                         </field>
                     </group>
                     <group string="Private Metadata" colspan="2">
                         <field
                             name="saleor_product_private_metadata_line_ids"
                             nolabel="1"
-                            readonly="is_metadata_fetched"
+                            attrs="{'readonly': [('is_metadata_fetched', '=', True)]}"
                         >
-                            <list editable="bottom">
+                            <tree editable="bottom">
                                 <field name="key" />
                                 <field name="value" />
-                            </list>
+                            </tree>
                         </field>
                     </group>
                 </page>
