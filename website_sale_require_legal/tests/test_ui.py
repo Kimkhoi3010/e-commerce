@@ -1,7 +1,11 @@
 # Copyright 2017 Jairo Llopis <jairo.llopis@tecnativa.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+import logging
+
 from odoo.tests import new_test_user, tagged
 from odoo.tests.common import HttpCase
+
+_logger = logging.getLogger(__name__)
 
 
 @tagged("post_install", "-at_install")
@@ -77,8 +81,14 @@ class UICase(HttpCase):
                 lambda one: "Website legal terms acceptance metadata" in one.body
             )
         )
+        _logger.info("\n=====Order messages:=====\n")
+        for msg in order.message_ids:
+            _logger.info("\n=====Message=====\n %s", msg.body)
         self.assertTrue(
             partner.message_ids.filtered(
                 lambda one: "Website legal terms acceptance metadata" in one.body
             )
         )
+        _logger.info("\n=====Partner messages:=====\n")
+        for msg in partner.message_ids:
+            _logger.info("\n=====Message=====\n %s", msg.body)
