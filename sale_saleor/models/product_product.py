@@ -44,6 +44,14 @@ class ProductProduct(models.Model):
         This field is synchronized with the default_code (Internal Reference) field
         """,
     )
+    saleor_sync_inventory = fields.Boolean(
+        string="Sync Variant to Saleor",
+        default=True,
+        help=(
+            "If unchecked, inventory quantity updates for this variant will not "
+            "be synchronized to Saleor."
+        ),
+    )
 
     def _variant_add_channels(self, payload):
         def _collect_channels(recs):

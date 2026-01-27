@@ -43,6 +43,15 @@ class ProductTemplate(models.Model):
         help="Saleor channels where this product is available.",
     )
 
+    saleor_sync_inventory = fields.Boolean(
+        string="Sync Inventory to Saleor",
+        default=True,
+        help=(
+            "If unchecked, inventory quantity updates for this product's variants "
+            "will not be synchronized to Saleor."
+        ),
+    )
+
     # Optional: link to a collection to sync the product into Saleor collection
     saleor_collection_id = fields.Many2one(
         "product.collection",
@@ -188,6 +197,10 @@ class ProductTemplate(models.Model):
     @api.model
     def write(self, vals):
         res = super().write(vals)
+        if "saleor_sync_inventory" in vals:
+            self.mapped("product_variant_ids").write(
+                {"saleor_sync_inventory": vals["saleor_sync_inventory"]}
+            )
         # When attributes matrix changes, resync variants with Saleor
         if "attribute_line_ids" in vals:
             account = get_active_saleor_account(self.env, raise_if_missing=False)

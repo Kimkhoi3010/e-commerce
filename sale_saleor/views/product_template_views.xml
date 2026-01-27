@@ -39,6 +39,7 @@
                 <page string="Saleor">
                     <group string="General Information">
                         <group>
+                            <field name="saleor_sync_inventory" />
                             <field name="channel_ids" widget="many2many_tags" />
                             <field name="product_type_id" string="Product Type" />
                         </group>

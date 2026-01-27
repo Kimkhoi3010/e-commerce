@@ -32,12 +32,14 @@ class StockQuant(models.Model):
         if tools.config["test_enable"]:
             return
 
-        account = get_active_saleor_account(self.env, raise_if_missing=True)
-
-        # Collect affected variants
-        variants = self.mapped("product_id").filtered("saleor_variant_id")
+        # Collect affected variants that should sync to Saleor
+        variants = self.mapped("product_id").filtered(
+            lambda p: p.saleor_variant_id and getattr(p, "saleor_sync_inventory", True)
+        )
         if not variants:
             return
+
+        account = get_active_saleor_account(self.env, raise_if_missing=True)
 
         variant_by_id = {v.id: v for v in variants}
         variant_ids = list(variant_by_id.keys())

@@ -23,6 +23,7 @@
                 />
             </xpath>
             <xpath expr="//field[@name='type']" position="after">
+                <field name="saleor_sync_inventory" />
                 <field
                     name="channel_ids"
                     widget="many2many_tags"
